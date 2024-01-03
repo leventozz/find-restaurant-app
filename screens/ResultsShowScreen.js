@@ -27,12 +27,12 @@ export default function ResultsShowScreen({ route }) {
             <FlatList
                 data={result.photos}
                 renderItem={({ item }) => {
-                    return <Image style={{height:100, width:100}} source = {{uri:item}}/>
+                    return <Image style={{ height: 100, width: 100 }} source={{ uri: item }} />
                 }
                 }
             />
         </View>
     )
-}
 
-const styles = StyleSheet.create({})
+    const styles = StyleSheet.create({})
+}
