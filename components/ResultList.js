@@ -5,9 +5,11 @@ import ResultDetail from './ResultDetail'
 export default function ResultList({title, results}) {
     
   return (
-    <View>
-      <Text>{title}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
       <FlatList
+      horizontal
+      showsHorizontalScrollIndicator={false}
       data={results}
       renderItem={({item})=>{
         return (
@@ -21,4 +23,15 @@ export default function ResultList({title, results}) {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container:{
+        marginBottom:15
+    },
+    title:{
+        fontSize:18,
+        fontWeight:'bold',
+        marginLeft:15,
+        marginBottom:5
+
+    }
+})

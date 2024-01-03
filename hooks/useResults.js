@@ -7,7 +7,7 @@ const useResults = () => {
     const searchApi = async (searchTerm) => {
         const response = await yelp.get('/search', {
             params: {
-                limit: 50,
+                limit: 15,
                 term: searchTerm,
                 location: 'İstanbul',
             },
