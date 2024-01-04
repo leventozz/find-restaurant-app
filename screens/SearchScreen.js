@@ -49,9 +49,10 @@ export default function SearchScreen() {
 
 const styles = StyleSheet.create({
     empty: {
-        justifyContent:'center',
-        alignItems:'center',
+        marginTop: '50%',
+        alignSelf:'center',
         fontSize:25,
         fontWeight:'bold',
+        marginLeft:10
     }
 })
