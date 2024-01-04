@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, {useState}  from 'react'
+import React, { useState } from 'react'
 import SearchBar from '../components/SearchBar'
 import useResults from '../hooks/useResults'
 import ResultList from '../components/ResultList';
@@ -7,7 +7,7 @@ import ResultList from '../components/ResultList';
 
 
 export default function SearchScreen() {
-    const [searchApi, results] = useResults();
+    const [searchApi, results, errorMsg] = useResults();
     const [term, setTerm] = useState('')
 
     const filterResultByPrice = (price) => {
@@ -18,25 +18,40 @@ export default function SearchScreen() {
 
     return (
         <View>
-            <SearchBar 
-            term={term}
-            onTermChange={setTerm}
-            onTermSubmit={()=>searchApi(term)}
+            <SearchBar
+                term={term}
+                onTermChange={setTerm}
+                onTermSubmit={() => searchApi(term)}
             />
-            <ResultList
-                title='Cheap Restaurants'
-                results={filterResultByPrice('₺')}
-            />
-            <ResultList
-                title='Affordable Restaurants'
-                results={filterResultByPrice('₺₺')}
-            />
-            <ResultList
-                title='Expensive Restaurants'
-                results={filterResultByPrice('₺₺₺')}
-            />
+            {errorMsg ? <Text>{errorMsg}</Text> : null}
+
+            {results.length === 0 ? (
+                <Text style={styles.empty}>Couldn't Find Anything!</Text>
+            ) : (
+                <>
+                    <ResultList
+                        title='Cheap Restaurants'
+                        results={filterResultByPrice('₺')}
+                    />
+                    <ResultList
+                        title='Affordable Restaurants'
+                        results={filterResultByPrice('₺₺')}
+                    />
+                    <ResultList
+                        title='Expensive Restaurants'
+                        results={filterResultByPrice('₺₺₺')}
+                    />
+                </>
+            )}
         </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    empty: {
+        justifyContent:'center',
+        alignItems:'center',
+        fontSize:25,
+        fontWeight:'bold',
+    }
+})
