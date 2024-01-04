@@ -31,15 +31,15 @@ export default function SearchScreen() {
                 <>
                     <ResultList
                         title='Cheap Restaurants'
-                        results={filterResultByPrice('₺')}
+                        results={filterResultByPrice('$')}
                     />
                     <ResultList
                         title='Affordable Restaurants'
-                        results={filterResultByPrice('₺₺')}
+                        results={filterResultByPrice('$$')}
                     />
                     <ResultList
                         title='Expensive Restaurants'
-                        results={filterResultByPrice('₺₺₺')}
+                        results={filterResultByPrice('$$$')}
                     />
                 </>
             )}
